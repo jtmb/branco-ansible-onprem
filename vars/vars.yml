@@ -1,0 +1,28 @@
+
+# ###########################################################################################################################################################
+# #                                                              !!!SET VARS HERE!!!                                                                      # #
+# #   Vars must be set in order for ansible deploy to work. If you are unsure about what these VARS do, search for them in the project and get familiar.  # #
+#############################################################################################################################################################
+
+# IF using ansible vault encrypted secrets, state the secrets in vault.yml
+
+# Linux Vars (mandatory)
+repo_name: "branco-ansible-onprem"   #in the event your fork the repo and change the name, update repo name here
+homedir: "/home/{{ssh_user_secret}}"   # Sets home dir to your SSH user, don;t change this unless you know what you are doing.
+ssh_user: "{{ ssh_user_secret }}"   # SSH user name
+ssh_pass: "{{ ssh_pass_secret }}"   # SSH pass you use to connect 
+sudo_pass: "{{ssh_pass_secret}}"    # Define sudo pass (if same as ssh pass, you can always a variable example:  ssh_pass: {{ssh_pass}})
+public_server_ip: "{{ public_server_ip_secret }}"
+ssh_port: "{{ ssh_port_secret }}"   # IF running play on server with different SSH port than default 22 or IF running second time - change port here
+target_server_ip: "{{ target_server_ip_secret }}"   # Address of server you want to target (provision) with the playbook
+ssh_cert: "{{ ssh_cert_secret }}"    # #Point to private file used to connect
+deploy_user: brajam #name of user to deploy
+ssh_key_to_deploy: "{{ssh_key_to_deploy_secret}}" #key to deploy for user
+
+
+# Debug Vars
+deploy_containers: false   # leave true to deploy container workload, flase to skip container workload.
+deploy_packages: false
+deploy_ssh_security: false
+update_reboot: false
+provision_user: true

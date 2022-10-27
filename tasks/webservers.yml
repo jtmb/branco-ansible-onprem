@@ -1,0 +1,80 @@
+# WebServer Block
+
+- name: lucinda.branconet.com
+  docker_container:
+    name: "ws-lucinda.branconet.com"
+    image: "nginx"
+    pull: yes
+    state: started
+    restart: yes
+    restart_policy: unless-stopped
+    ports: 
+      - "{{ target_server_ip }}:8080:80"
+    volumes:
+      - '{{homedir}}/container-program-files/ws-lucinda.branconet.com:/usr/share/nginx/html'
+
+- name: santos.branconet.com
+  docker_container:
+    name: "ws-santos.branconet.com"
+    image: "nginx"
+    pull: yes
+    state: started
+    restart: yes
+    restart_policy: unless-stopped
+    ports: 
+      - "{{ target_server_ip }}:8081:80"
+    volumes:
+      - '{{homedir}}/container-program-files/ws-santos.branconet.com:/usr/share/nginx/html'
+
+- name: aplb.branconet.com
+  docker_container:
+    name: "ws-aplb.branconet.com"
+    image: "nginx"
+    pull: yes
+    state: started
+    restart: yes
+    restart_policy: unless-stopped
+    ports: 
+      - "{{ target_server_ip }}:8082:80"
+    volumes:
+      - '{{homedir}}/container-program-files/ws-aplb.branconet.com:/usr/share/nginx/html'
+
+- name: homer.branconet.com
+  docker_container:
+    name: "ws-homer.branconet.com"
+    image: "b4bz/homer:latest"
+    pull: yes
+    state: started
+    restart: yes
+    restart_policy: unless-stopped
+    ports: 
+      - "{{ target_server_ip }}:8089:8080"
+    volumes:
+      - '{{homedir}}/container-program-files/ws-homer.branconet.com:/www/assets'
+
+
+# Provision Websites
+
+- name: Clone Website lucinda.branconet.com
+  ansible.builtin.git:
+    repo: https://github.com/jtmb/lucinda-art-gallery.git
+    dest: '{{homedir}}/container-program-files/ws-lucinda.branconet.com'
+    version: master
+
+- name: Clone Website santos.branconet.com
+  ansible.builtin.git:
+    repo: https://github.com/jtmb/santosweb.git
+    dest: '{{homedir}}/container-program-files/ws-santos.branconet.com'
+    version: master
+
+- name: Clone Website aplb.branconet.com
+  ansible.builtin.git:
+    repo: https://github.com/chucky747/aplb.branconet.com.git
+    dest: '{{homedir}}/container-program-files/ws-aplb.branconet.com'
+    version: master
+
+- name: Clone Website homer.branconet.com
+  ansible.builtin.git:
+    repo: https://github.com/jtmb/pi_homer.git
+    dest: '{{homedir}}/container-program-files/ws-homer.branconet.com'
+    version: master
