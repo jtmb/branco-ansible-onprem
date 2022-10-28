@@ -1,10 +1,3 @@
-- name: Remove apt lock file
-  file:
-    state: absent
-    path: "/var/lib/dpkg/lock-frontend"
-  become: true
-  tags: apt
-
 - name: "update"
   shell: "apt-get update && \
           apt-get upgrade -y && \
