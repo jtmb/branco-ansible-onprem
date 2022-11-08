@@ -12,7 +12,7 @@ homedir: "/home/{{ssh_user_secret}}"   # Sets home dir to your SSH user, don;t c
 ssh_user: "{{ ssh_user_secret }}"   # SSH user name
 ssh_pass: "{{ ssh_pass_secret }}"   # SSH pass you use to connect 
 sudo_pass: "{{ssh_pass_secret}}"    # Define sudo pass (if same as ssh pass, you can always a variable example:  ssh_pass: {{ssh_pass}})
-public_server_ip: "142.189.213.178"
+public_server_ip: "76.64.77.132"
 ssh_port: "{{ ssh_port_secret }}"   # IF running play on server with different SSH port than default 22 or IF running second time - change port here
 target_server_ip: "{{ target_server_ip_secret }}"   # Address of server you want to target (provision) with the playbook
 ssh_cert: "{{ ssh_cert_secret }}"    # #Point to private file used to connect
