@@ -14,7 +14,7 @@ ssh_pass: "{{ ssh_pass_secret }}"   # SSH pass you use to connect
 sudo_pass: "{{ssh_pass_secret}}"    # Define sudo pass (if same as ssh pass, you can always a variable example:  ssh_pass: {{ssh_pass}})
 public_server_ip: "{{ lookup('file', '/tmp/ip.out') }}"
 ssh_port: "{{ ssh_port_secret }}"   # IF running play on server with different SSH port than default 22 or IF running second time - change port here
-target_server_ip: "{{public_server_ip}}"   # Address of server you want to target (provision) with the playbook
+target_server_ip: "{{private_server_ip}}"   # Address of server you want to target (provision) with the playbook
 ssh_cert: "{{ ssh_cert_secret }}"    # #Point to private file used to connect
 deploy_user: brajam #name of user to deploy
 ssh_key_to_deploy: "{{ssh_key_to_deploy_secret}}" #key to deploy for user
