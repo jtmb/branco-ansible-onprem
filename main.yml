@@ -1,6 +1,18 @@
 ---
 # Fill in vars.yml before running
 
+- name: "Set Public IP"
+  strategy: linear
+  hosts: localhost
+  become: true
+  vars_files:
+    - vars/vars.yml
+    - vars/vault.yml
+    - vars/ip-vars.yml
+  tasks:
+  - name: Install Required Packages
+    include: tasks/check_public_ip.yml
+
 # Post-provisioning VM
 - name: "Provision Enviorment"
   strategy: linear
