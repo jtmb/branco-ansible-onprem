@@ -4,7 +4,6 @@
 - name: "Set Public IP"
   strategy: linear
   hosts: localhost
-  become: true
   vars_files:
     - vars/vars.yml
     - vars/vault.yml
