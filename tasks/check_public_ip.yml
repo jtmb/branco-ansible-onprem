@@ -20,4 +20,4 @@
       msg: "{{cloudflare_server_ip.msg}}"
   
   - name: Save IP to temp file
-    shell: echo {{cloudflare_server_ip.msg}} >> defaults/temp/ip.out
+    shell: echo {{cloudflare_server_ip.msg}} >> ./defaults/temp/ip.out
