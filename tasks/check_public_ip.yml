@@ -18,6 +18,10 @@
   - name: Current Public IP
     debug:
       msg: "{{cloudflare_server_ip.msg}}"
-  
+
+  - name: Remove current IP file
+    ansible.builtin.file:
+      path: /tmp/ip.out
+      state: absent
   - name: Save IP to temp file
     shell: echo {{cloudflare_server_ip.msg}} >> /tmp/ip.out
